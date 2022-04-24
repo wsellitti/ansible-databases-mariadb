@@ -1,0 +1,11 @@
+---
+# Configure mysql
+- name: Run database install database
+  ansible.builtin.apt: "{{ mysql_package }}"
+
+- name: Create mysql user
+  community.mysql.mysql_user:
+    login_host: localhost
+    login_user: root
+    name: "{{ database_service_user }}"
+    password: "{{ database_service_password }}"

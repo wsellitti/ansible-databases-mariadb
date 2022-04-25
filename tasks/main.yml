@@ -9,6 +9,8 @@
     login_user: "{{ database_user }}"
     name: "{{ database_name }}"
     state: present
+    encoding: "{{ mysql_db_encoding }}"
+    collation: "{{ mysql_db_collation }}"
 
 - name: Create mysql user
   community.mysql.mysql_user:
@@ -16,3 +18,5 @@
     login_user: "{{ database_user }}"
     name: "{{ database_service_user }}"
     password: "{{ database_service_password }}"
+    priv: 
+      "{{ [[database_name,database_tables|default('*')]|join('.') ,[database_service_privileges,'GRANT']]|join(':') }}"

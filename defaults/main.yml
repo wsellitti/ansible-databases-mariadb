@@ -1,1 +1,3 @@
 mysql_package: mariadb
+database_host: localhost
+database_user: root

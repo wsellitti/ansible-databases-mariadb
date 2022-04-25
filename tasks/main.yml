@@ -3,9 +3,16 @@
 - name: Run database install database
   ansible.builtin.apt: "{{ mysql_package }}"
 
+- name: Create {{ database_name }}
+  community.mysql.mysql_db:
+    login_host: "{{ database_host }}"
+    login_user: "{{ database_user }}"
+    name: "{{ database_name }}"
+    state: present
+
 - name: Create mysql user
   community.mysql.mysql_user:
-    login_host: localhost
-    login_user: root
+    login_host: "{{ database_host }}"
+    login_user: "{{ database_user }}"
     name: "{{ database_service_user }}"
     password: "{{ database_service_password }}"

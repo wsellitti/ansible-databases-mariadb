@@ -1,6 +1,6 @@
 # Variables
 
-`mysql_package`: Package. Default mariadb
+`mysql_packages`: List of packages. Defaults to mariadb, python3-pymysql
 
 `mysql_db_encoding`: database encoding, default utf8
 

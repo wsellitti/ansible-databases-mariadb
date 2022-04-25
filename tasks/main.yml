@@ -1,7 +1,7 @@
 ---
 # Configure mysql
 - name: Run database install database
-  ansible.builtin.apt: "{{ mysql_package }}"
+  ansible.builtin.apt: "{{ mysql_packages }}"
 
 - name: Create {{ database_name }}
   community.mysql.mysql_db:

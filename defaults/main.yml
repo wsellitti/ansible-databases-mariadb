@@ -1,4 +1,6 @@
-mysql_package: mariadb
+mysql_packages:
+  - mariadb
+  - python3-pymysql
 mysql_db_encoding: utf8
 mysql_db_collation: ""
 database_host: localhost

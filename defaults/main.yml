@@ -5,4 +5,4 @@ mysql_db_encoding: utf8
 mysql_db_collation: ""
 database_host: localhost
 database_user: root
-database_service_privileges: all
+mysql_service_privileges: all

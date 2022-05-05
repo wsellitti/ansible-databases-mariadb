@@ -1,12 +1,13 @@
 ---
 # Configure mysql
-- name: Run database install database
+- name: Install database
   ansible.builtin.apt: "{{ mysql_packages }}"
 
-- name: Create {{ database_name }}
+- name: Create {{ database_name }} database
   community.mysql.mysql_db:
     login_host: "{{ database_host }}"
     login_user: "{{ database_user }}"
+    login_unix_socket: "/var/run/mysqld/mysqld.sock"
     name: "{{ database_name }}"
     state: present
     encoding: "{{ mysql_db_encoding }}"
@@ -16,7 +17,8 @@
   community.mysql.mysql_user:
     login_host: "{{ database_host }}"
     login_user: "{{ database_user }}"
+    login_unix_socket: "/var/run/mysqld/mysqld.sock"
     name: "{{ database_service_user }}"
     password: "{{ database_service_password }}"
     priv: 
-      "{{ [[database_name,database_tables|default('*')]|join('.') ,[database_service_privileges,'GRANT']]|join(':') }}"
+      "{{ [[database_name,database_tables|default('*')]|join('.'),[mysql_service_privileges,'GRANT']|join(',')]|join(':') }}"

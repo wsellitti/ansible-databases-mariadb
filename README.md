@@ -14,7 +14,7 @@
 
 `database_service_password`: Password of the database service
 
-`database_service_privileges`: Privileges, default all.
+`mysql_service_privileges`: Privileges, default all.
 
 `database_name`: Database for the service to use.
 
